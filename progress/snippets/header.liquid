@@ -1,0 +1,102 @@
+<header>
+  <!--------------- Header Top ---------------->
+  <section class="header-top padding-top-10 padding-bottom-10">
+    <div class="container">
+      <div class="row">
+        {% if settings.enable_header_social_link %}
+        <!--------------- Header Social ---------------->
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <ul class="list-inline header-social">
+            {% if settings.enable_fb_header %}
+            <li><a href="{{ settings.fb_link }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+            {% endif %}
+            {% if settings.enable_gplus_header %}
+            <li><a href="{{ settings.gplus_link }}"><i class="fa fa-google"></i></a></li>
+            {% endif %}
+            {% if settings.enable_ins_header %}
+            <li><a href="{{ settings.ins_link }}"><i class="fa fa-instagram"></i></a></li>
+            {% endif %}
+            {% if settings.enable_pi_header %}
+            <li><a href="{{ settings.pi_link }}"><i class="fa fa-pinterest"></i></a></li>
+            {% endif %}
+            {% if settings.enable_tw_header %}
+            <li><a href="{{ settings.tw_link }}"><i class="fa fa-twitter"></i></a></li>
+            {% endif %}
+            {% if settings.enable_li_header %}
+            <li><a href="{{ settings.li_link }}"><i class="fa fa-linkedin"></i></a></li>
+            {% endif %}
+            {% if settings.enable_flic_header %}
+            <li><a href="{{ settings.flick_link }}"><i class="fa fa-flickr"></i></a></li>
+            {% endif %}
+            {% if settings.enable_dri_header %}
+            <li><a href="{{ settings.dri_link }}"><i class="fa fa-dribbble"></i></a></li>
+            {% endif %}
+            {% if settings.enable_you_header %}
+            <li><a href="{{ settings.you_link }}"><i class="fa fa-youtube"></i></a></li>
+            {% endif %}
+            {% if settings.enable_email_header %}
+            <li><a href="mailto:{{ settings.email_link }}"><i class="fa fa-envelope"></i></a></li>
+            {% endif %}
+          </ul>
+        </div>
+        {% endif %}
+        <!--------------- Account ---------------->
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <ul class="list-inline header-info text-right">
+            <li><i class="fa fa-phone"></i> {{ settings.phone_number }}</li>
+            {% if shop.customer_accounts_enabled %}
+            {% if settings.enable_login %}
+            <li>
+              {% if customer %}
+              <a href="/account/logout">Logout</a>
+              {% else %}
+              <a href="/account/login">Login</a>
+              {% endif %}
+            </li>
+            {% endif %}
+            {% if settings.enable_register %}
+            {% if customer %}
+            <li><a href="/account">My Account</a></li>
+            {% else %}
+            <li><a href="/account/register">Register</a></li>
+            {% endif %}
+            {% endif %}
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--------------- Header Middle ---------------->
+  <section class="header-middle">
+    <div class="container">
+      <div class="row">
+        {% if settings.enable_site_logo %}
+        <!--------------- Logo ---------------->
+        <div class="col-md-3 col-sm-4 col-xs-12 logo">
+          {% if settings.select_site_logo == '1' %}
+          <a href="/"><img src="{{ 'logo.png' | asset_url }}" class="img-responsive" /></a>
+          {% else %}
+          <h2 class="margin-to-20 margin-bottom-20"><a href="/">{{ settings.site_logo_text }}</a></h2>
+          {% endif %}
+        </div>
+        {% endif %}
+        <!--------------- Cart ---------------->
+        <div class="col-md-9 col-sm-8 col-xs-12 text-right mini-cart">
+          <ul class="list-inline">
+            <li><a href="/cart"><i class="fa fa-shopping-basket"></i> <span class="money">$0.00</span> <span class="badge">0</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--------------- Header Bottom ---------------->
+  <section class="header-bottom">
+    <div class="container">
+      <div class="row">
+        <!--------------- Navigation ---------------->
+        {% include 'navigation' %}
+      </div>
+    </div>
+  </section>
+</header>

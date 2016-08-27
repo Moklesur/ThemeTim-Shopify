@@ -1,0 +1,19 @@
+<!--------------- New Arrival ---------------->
+<section class="new-arrival-product padding-gap-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+        <h1 class="page-header">{{ settings.new_arrival_heading }}</h1>
+      </div>
+      <div class="full-width display-inline-b">
+        <div class="new-arrival">
+            {% for product in collections.[settings.new_arrival].products limit: settings.new_arrival_limit %}
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                {% include 'product' %}
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,37 @@
+<div class="product-wrap">
+    <div class="product-image">
+        <a href="{{ product.url }}">
+            <div class="product-overlay"></div>
+            {% assign featured_image = product.featured_image %}
+            <img src="{{ featured_image | img_url: 'large' }}" class="img-responsive center-block" alt="{{ featured_image.alt | escape }}" />
+        </a>
+    </div>
+    {% if product.compare_at_price_max > product.price %}
+    <div class="new">New</div>
+    {% endif %}
+    <!--<div class="sold">Sold</div>-->
+    <div class="product-hover">
+            <span class="product-rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half"></i>
+            </span>
+    </div>
+    <div class="title-price">
+        <h4 class="margin-to-20"><a href="{{ product.url }}">{{ product.title }}</a></h4>
+        <p class="overflow">
+            {% if product.compare_at_price_max > product.price %}
+            <del class="pull-left"><span class="money">{{ product.compare_at_price | money }}</span></del>
+            <span class="money pull-right">{{ product.price | money }}</span>
+            {% else %}
+            <span class="money ">{{ product.price | money }}</span>
+            {% endif %}
+        </p>
+    </div>
+    <div class="product-button">
+        <a href="{{ product.url }}" class="btn btn-default btn-block text-uppercase product-message">Buy Now</a>
+    </div>
+    <!-- Button trigger modal -->
+</div>

@@ -1,0 +1,33 @@
+<main class="register-page">
+    <!--------------- Register ---------------->
+    <section class="register-content">
+        <!--------------- Register Form ---------------->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="page-header">Register</h2>
+                </div>
+                <div class="col-md-6 margin-to-30">
+                    <form method="post" action="/account" class="register-form" id="create_customer" accept-charset="UTF-8">
+                        <input type="hidden" value="create_customer" name="form_type">
+                        <input type="hidden" name="utf8" value="✓">
+                        <label>First Name</label>
+                        <input type="text" value="" name="customer[first_name]" id="first_name" class="form-control margin-bottom-20">
+                        <label>Last Name</label>
+                        <input type="text" value="" name="customer[last_name]" id="last_name" class="form-control margin-bottom-20">
+                        <label>Email</label>
+                        <input type="email" value="" name="customer[email]" id="email" class="form-control margin-bottom-20">
+                        <label>Password</label>
+                        <input type="password" value="" name="customer[password]" id="password" class="form-control margin-bottom-20">
+                        <button type="submit" class="btn btn-default pull-left">Submit</button>
+                        <a href="/" class="btn btn-default pull-right">Return to Store</a>
+                    </form>
+                </div>
+                <div class="col-md-6 margin-to-30 text-center">
+                    <h1 class="margin-null margin-bottom-20 text-uppercase">want to Login?</h1>
+                    <a href="/account/login" class="btn btn-primary btn-lg text-uppercase">click me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,26 @@
+<!--------------- Blog ---------------->
+<section class="blog-feed">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h1 class="page-header margin-bottom-10 text-center">{{settings.blog_heading}}</h1>
+            </div>
+            <div class="full-width">
+                {% for article in blogs['news'].articles limit: settings.home_blog_limit %}
+                <div class="col-md-4 col-sm-4 col-xs-12 margin-to-30">
+                    <h2 class="margin-bottom-20"><a href="{{article.url}}">{{article.title}}</a></h2>
+                    {% if article.image %}
+                    <div class="feature-image">
+                        <img src="{{ article | img_url: 'medium' }}" class="img-responsive center-block margin-bottom-20" align="" />
+                    </div>
+                    {% endif %}
+                    <div class="margin-bottom-20">
+                        <p>{{article.content | strip_html | truncatewords:40}}</p>
+                    </div>
+                    <a href="{{article.url}}" class="btn btn-default">Continue Reading</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,37 @@
+<main class="home-page">
+    {% if settings.enable_slider %}
+    <!--------------- Main Slider ---------------->
+    {% include 'slider' %}
+    {% endif %}
+    {% if settings.enable_small_banner %}
+    <!--------------- Home Banner ---------------->
+    {% include 'banner' %}
+    {% endif %}
+    {% if settings.enable_new_arrival %}
+    <!--------------- New Arrival Product ---------------->
+    {% include 'new-arrival' %}
+    {% endif %}
+    {% if settings.enable_parallax %}
+    <!--------------- Home Parallax ---------------->
+    {% include 'parallax' %}
+    {% endif %}
+    {% if settings.enable_collection %}
+    <!--------------- Home Collection ---------------->
+    {% include 'collections-item' %}
+    {% endif %}
+    {% if settings.enable_best_selling %}
+    <!--------------- Best Selling Product ---------------->
+    {% include 'best-selling' %}
+    {% endif %}
+    {% if settings.enable_blog %}
+    <!--------------- Blog Feed ---------------->
+    {% include 'blog-news' %}
+    {% endif %}
+    {% if settings.enable_brand %}
+    <!--------------- Our Brand ---------------->
+    {% include 'brand' %}
+    {% endif %}
+</main>
+
+
+

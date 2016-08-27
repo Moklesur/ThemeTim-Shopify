@@ -1,0 +1,27 @@
+<!--------------- Collections ---------------->
+<section class="home-collection">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2 class="page-header">{{ settings.collection_heading }}</h2>
+      </div>
+      <div class="collection-items">
+        {% for collection in collections limit: settings.collection_limit %}
+        <div class="col-md-4 col-sm-4 col-xs-12 margin-to-30">
+          {% if collection.image %}
+          <div class="collection-feature-img">
+            <a href="{{collection.url}}"><img src="{{ collection.image | img_url: 'grande' }}" class="img-responsive center-block" alt="" /></a>
+          </div>
+          {% endif %}
+          {{ collection.all_products_count }}
+          <h3><a href="{{ collection.url }}">{{ collection.title }}</a></h3>
+          <div class="collection-description margin-bottom-20">
+            <p>{{collection.description | truncate: 130}}</p>
+          </div>
+          <a href="{{ collection.url }}" class="btn btn-default">See collection</a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

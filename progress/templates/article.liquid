@@ -1,0 +1,142 @@
+<main class="article-page">
+    <section class="article-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="page-header">{{article.title}}</h2>
+                    <p>
+                        <span class="display-inline-b margin-right-10"><i class="fa fa-calendar"></i> {{ article.published_at | date: "%B %d, %Y" }}</span>
+                        <span class="display-inline-b margin-right-10"><a href="{{ article.url }}#comment"> <i class="fa fa-comments-o"></i> {{article.comments_count}} comments</a></span>
+                        <span class="display-inline-b"><i class="fa fa-pencil-square-o"></i> {{article.author}}</span>
+                    </p>
+                </div>
+                {% if settings.enable_blog_widgets %}
+                <!--------------- Aside ---------------->
+                <aside class="widgets col-md-3 col-sm-3 col-xs-12 blog-widget widget">
+                    {% if settings.enable_recent_blog %}
+                    <figure class="margin-to-30">
+                        <figcaption><h4 class="panel-heading margin-null">{{ 'blogs.sidebar.recent_articles' | t }}</h4></figcaption>
+                        <ul class="list-unstyled">
+                            {% for article in blogs[blog.handle].articles limit: settings.recent_blog_limit %}
+                            <li>
+                                <h4><a href="{{ article.url }}">{{ article.title }}</a></h4>
+                                <p class="blog-date-time">
+                                    <span class="display-inline-b margin-right-10">{{ article.published_at | date: "%b %d, %Y" }}</span>
+                                    <span class="display-inline-b margin-right-10"><a href="{{ article.url }}#comment">{{article.comments_count}} comments</a></span>
+                                    <span class="display-inline-b">{{article.author}}</span>
+                                </p>
+                                <div class="full-width">
+                                    <p>{{article.content | strip_html | truncatewords:10}}</p>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </figure>
+                    {% endif %}
+                    {% if settings.enable_blog_tag %}
+                    {% if blog.all_tags.size > 0 %}
+                    <figure class="margin-to-30">
+                        <figcaption><h4 class="panel-heading margin-null">{{ 'blogs.sidebar.categories' | t }}</h4></figcaption>
+                        <ul class="list-unstyled">
+                            {% for tag in blog.all_tags %}
+                            {% if current_tags contains tag %}
+                            <li>{{ tag }}</li>
+                            {% else %}
+                            <li>{{ tag | link_to_tag: tag }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </figure>
+                    {% endif %}
+                    {% endif %}
+                </aside>
+                {% endif %}
+                <!--------------- Article Content ---------------->
+                <div class="col-md-9 col-sm-9 col-xs-12 collections-content">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 margin-to-30">
+                            {% if article.image %}
+                            <div class="feature-image margin-bottom-20">
+                                <img src="{{ article | img_url: '1024x1024' }}" class="img-responsive center-block" align="" />
+                            </div>
+                            {% endif %}
+                            <div class="margin-bottom-20">
+                                <p>{{article.content}}</p>
+                            </div>
+                        </div>
+                        {% if blog.next_article or blog.previous_article %}
+                        <div class="col-md-12">
+                            {% if blog.previous_article %}
+                              <span class="pull-left">
+                                <i class="fa fa-long-arrow-left"></i> {{ 'blogs.article.older_post' | t | link_to: blog.previous_article }}
+                              </span>
+                            {% endif %}
+                            {% if blog.next_article %}
+                              <span class="pull-right">
+                                {{ 'blogs.article.newer_post' | t | link_to: blog.next_article }} <i class="fa fa-long-arrow-right"></i>
+                              </span>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% if blog.comments_enabled? %}
+                    <div class="padding-gap-1 form-comments-wrap">
+                        {% if article.comments.size > 0 %}
+                        <!--------------- Comments ---------------->
+                        <div class="article-comments margin-bottom-20 display-inline-b full-width">
+                            <h3 class="margin-null margin-bottom-20">Comments</h3>
+                            {% if comment and comment.created_at %}
+                            <h5 class="note form-success">
+                                {% if blog.moderated? %}
+                                {{ 'blogs.comments.success_moderated' | t }}
+                                {% else %}
+                                {{ 'blogs.comments.success' | t }}
+                                {% endif %}
+                            </h5>
+                            {% endif %}
+                            <ul class="list-unstyled margin-bottom-20">
+                                {% if comment and comment.created_at %}
+                                <li class="margin-to-30 margin-bottom-30 position-r overflow">
+                                    <img src="{{ 'comments.png' | asset_url }}" class="position-a">
+                                    <div class="user-comments">
+                                        <h6 class="margin-clear">Posted On {{ comment.created_at | date: format: 'month_day_year' }} by {{ comment.author }}</h6>
+                                        <p class="margin-top-10">{{ comment.content }}</p>
+                                    </div>
+                                </li>
+                                {% endif %}
+                                {% for comment in article.comments %}
+                                <li class="margin-to-30 margin-bottom-30 position-r overflow">
+                                    <img src="{{ 'comments.png' | asset_url }}" class="position-a">
+                                    <div class="user-comments">
+                                        <h6 class="margin-clear">Posted On {{ comment.created_at | date: format: 'month_day_year' }} by {{ comment.author }}</h6>
+                                        <p class="margin-top-10">{{ comment.content }}</p>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                        <!--------------- Comment Form ---------------->
+                        <div class="comment-form">
+                            <h3 class="margin-bottom-20">{{ 'blogs.comments.title' | t }}</h3>
+                            {% form 'new_comment', article %}
+                            {{ form.errors | default_errors }}
+                            <label>{{ 'blogs.comments.name' | t }}</label><br>
+                            <input type="text" class="form-control margin-bottom-20" name="comment[author]" placeholder="{{ 'blogs.comments.name' | t }}" id="CommentAuthor" value="{{ form.author }}">
+                            <label>{{ 'blogs.comments.email' | t }}</label>
+                            <input type="email" class="form-control margin-bottom-20" name="comment[email]" placeholder="{{ 'blogs.comments.email' | t }}" id="CommentEmail" value="{{ form.email }}">
+                            <label>{{ 'blogs.comments.message' | t }}</label><br>
+                            <textarea class="form-control margin-bottom-20" rows="10" name="comment[body]" id="CommentBody" placeholder="{{ 'blogs.comments.message' | t }}">{{ form.body }}</textarea>
+                            {% if blog.moderated? %}
+                            <p><small>{{ 'blogs.comments.moderated' | t }}</small></p>
+                            {% endif %}
+                            <button type="submit" class="btn btn-default btn-lg" value="Send">Submit Comments</button>
+                            {% endform %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

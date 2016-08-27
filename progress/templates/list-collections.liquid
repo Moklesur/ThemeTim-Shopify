@@ -1,0 +1,53 @@
+<main class="list-collections-page">
+    <section class="list-collections-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="page-header">{{settings.list_collections_heading}}</h2>
+                </div>
+                {% paginate collections by settings.list_collection_limit %}
+                <div class="collection-items">
+                    {% for collection in collections %}
+                    <div class="col-md-4 col-sm-4 col-xs-12 margin-to-30">
+                        {% if collection.image %}
+                        <div class="collection-feature-img">
+                            <a href="{{collection.url}}"><img src="{{ collection.image | img_url: 'grande' }}" class="img-responsive center-block" alt="" /></a>
+                        </div>
+                        {% endif %}
+                        <h3 class="margin-bottom-20"><a href="{{collection.url}}">{{ collection.title }}</a></h3>
+                        <div class="collection-description margin-bottom-20">
+                            <p>{{collection.description | truncate: 130}}</p>
+                        </div>
+                        <a href="{{collection.url}}" class="btn btn-default">See collection</a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% if paginate.pages > 1 %}
+                <div class="col-md-12 col-sm-12 col-xs-12 pagination-wrap margin-to-30 text-center">
+                    <!--------------- pagination ---------------->
+                    <ul class="list-inline pagination">
+                        {% if paginate.previous %}
+                        <li class="display-inline-b"><a href="{{paginate.previous.url}}" class="next-previous"><i class="fa fa-angle-left"></i></a></li>
+                        {% else %}
+                        <li class="disabled display-inline-b"><a><i class="fa fa-angle-left"></i></a></li>
+                        {% endif %}
+                        {% for part in paginate.parts %}
+                        {% if part.is_link %}
+                        <li class="display-inline-b"><a href="{{part.url}}"><span>{{ part.title }}</span></a></li>
+                        {% else %}
+                        <li class="active display-inline-b"><span>{{ part.title }}</span></li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if paginate.next %}
+                        <li class="display-inline-b"><a href="{{paginate.next.url}}" class="prev-paginate"><i class=" fa fa-angle-right"></i></a></li>
+                        {% else %}
+                        <li class="display-inline-b"><a><i class=" fa fa-angle-right"></i></a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% endpaginate %}
+            </div>
+        </div>
+    </section>
+</main>

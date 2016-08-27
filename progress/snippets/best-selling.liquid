@@ -1,0 +1,17 @@
+<!--------------- Best Selling ---------------->
+<section class="best-selling-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                <h1 class="page-header margin-bottom-10">{{ settings.best_selling_heading }}</h1>
+            </div>
+            <div class="best-selling">
+                {% for product in collections.[settings.best_selling_collection].products limit: settings.best_selling_limit %}
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    {% include 'product' %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

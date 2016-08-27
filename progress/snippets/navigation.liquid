@@ -1,0 +1,64 @@
+<!--------------- Primary Menu ---------------->
+<nav class="navbar navbar-default text-uppercase main-menu">
+  <div class="navbar-header">
+    <button type="button" data-toggle="collapse" data-target="#navbar-collapse" class="navbar-toggle">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+  <div id="navbar-collapse" class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+      {% for link in linklists.main-menu.links %}
+      {% if linklists[link.handle] == empty %}
+      <li class="{% if link.active %}active{% endif %}">
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      </li>
+      {% else %}
+      <!--------------- Drop Down Menu ---------------->
+      <li class="dropdown {% if link.active %}active{% endif %}">
+        <a href="{{ link.url }}">{{ link.title }}  <i class="fa fa-angle-down"></i></a>
+        <ul role="menu" class="dropdown-menu list-unstyled">
+          {% for dropdown in linklists[link.handle].links %}
+          {% if linklists[dropdown.handle] == empty %}
+          <li><a href="{{ dropdown.url }}">{{ dropdown.title }}</a></li>
+          {% else %}
+          <li class="dropdown-submenu">
+            <a href="{{ dropdown.url }}">{{ dropdown.title }} <i class="fa fa-angle-right"></i></a>
+            <ul role="menu" class="dropdown-menu">
+              {% for dropdown_1 in linklists[dropdown.handle].links %}
+              {% if linklists[dropdown_1.handle] == empty %}
+              <li><a href="{{ dropdown_1.url }}">{{ dropdown_1.title }}</a></li>
+              {% else %}
+              <li class="dropdown-submenu">
+                <a href="{{ dropdown_1.url }}">{{ dropdown_1.title }} <i class="fa fa-angle-right"></i></a>
+                <ul role="menu" class="dropdown-menu">
+                  {% for dropdown_2 in linklists[dropdown_1.handle].links %}
+                  {% if linklists[dropdown_2.handle] == empty %}
+                  <li><a href="{{ dropdown_2.url }}">{{ dropdown_2.title }}</a></li>
+                  {% endif %}
+                  {% endfor %}
+                </ul>
+              </li>
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+    {% if settings.enable_search %}
+    <!--------------- Search ---------------->
+    <form class="navbar-form navbar-right" role="search" action="/search">
+      <div class="form-group">
+        <input type="text" name="q" class="form-control" placeholder="{{ 'general.search.placeholder' | t }}"  value="{{ search.terms }}" />
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    {% endif %}
+  </div>
+</nav>

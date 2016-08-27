@@ -1,0 +1,31 @@
+/********************************************************
+        Color & Font Family
+        Version:   1.0
+********************************************************/
+body{
+    color: #989898;
+    background-color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+a,.header-bottom .navbar-default .active a:hover,.header-bottom .navbar-default li> a,.pagination>li>a, .pagination>li>span{
+    color: #333;
+}
+a:hover,.header-bottom .navbar-default .active a,.header-bottom .navbar-default .active a:hover,.header-bottom .navbar-default li> a:hover{
+    color: #ff401b;
+}
+.btn-default, .btn-default.disabled,.woocommerce ul.products li.product .button{
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.btn-default.active, .btn-default.focus, .btn-default:active, .btn-default:focus, .btn-default:hover, .open>.dropdown-toggle.btn-default,.woocommerce ul.products li.product .button:hover,.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover,.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover{
+    color: #fff;
+    background-color: #ff401b;
+    border-color: #ff401b;
+}

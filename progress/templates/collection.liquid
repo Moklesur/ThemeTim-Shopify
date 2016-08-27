@@ -1,0 +1,69 @@
+<main class="collections-page">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="page-header">{{ collection.title }}</h2>
+                </div>
+                {% if collection.description != blank %}
+                <div class="collection-description margin-to-40">
+                    <p>{{ collection.description }}</p>
+                </div>
+                {% endif %}
+                {% if settings.enable_collection_widget %}
+                <!--------------- Aside ---------------->
+                <aside class="widgets col-md-3 col-sm-3 col-xs-12 product-widget widget">
+                    <figure class="margin-to-30">
+                        <figcaption><h4 class="panel-heading margin-null">Collections</h4></figcaption>
+                        <ul class="list-unstyled">
+                            {% for collection in collections %}
+                            <li><a href="{{ collection.url }}" class="collections-category">{{ collection.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </figure>
+                    <figure class="margin-to-30">
+                        <figcaption><h4 class="panel-heading margin-null">HOT Dress</h4></figcaption>
+                        <img src="http://placehold.it/600x450" class="img-responsive center-block" />
+                    </figure>
+                </aside> 
+                {% endif %}
+                {% paginate collection.products by settings.product_collection_limit %}
+                <!--------------- Collections Content ---------------->
+                <div class="col-md-9 col-sm-9 col-xs-12 collections-content">
+                    <div class="row">
+                        {% for product in collection.products %}
+                        <div class="col-md-4 col-sm-4 col-xs-12 margin-to-30">
+                            {% include 'product' %}
+                        </div>
+                        {% endfor %}
+                        {% if paginate.pages > 1 %}
+                        <div class="col-md-12 col-sm-12 col-xs-12 pagination-wrap margin-to-30 text-center">
+                            <!--------------- pagination ---------------->
+                            <ul class="list-inline pagination">
+                                {% if paginate.previous %}
+                                <li class="display-inline-b"><a href="{{paginate.previous.url}}" class="next-previous"><i class="fa fa-angle-left"></i></a></li>
+                                {% else %}
+                                <li class="disabled display-inline-b"><a><i class="fa fa-angle-left"></i></a></li>
+                                {% endif %}
+                                {% for part in paginate.parts %}
+                                {% if part.is_link %}
+                                <li class="display-inline-b"><a href="{{part.url}}"><span>{{ part.title }}</span></a></li>
+                                {% else %}
+                                <li class="active display-inline-b"><span>{{ part.title }}</span></li>
+                                {% endif %}
+                                {% endfor %}
+                                {% if paginate.next %}
+                                <li class="display-inline-b"><a href="{{paginate.next.url}}" class="prev-paginate"><i class=" fa fa-angle-right"></i></a></li>
+                                {% else %}
+                                <li class="display-inline-b"><a><i class=" fa fa-angle-right"></i></a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endpaginate %}
+            </div>
+        </div>
+    </section>
+</main>

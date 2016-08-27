@@ -1,0 +1,248 @@
+/********************************************************
+    Project:   ThemeTim HTML (Shopify)
+    Build:     Bootstrap 3 +
+    Author:    ThemeTim
+    Version:   1.0
+********************************************************/
+
+/********************************************************
+    ## Common
+********************************************************/
+body{
+}
+a,.btn{
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+a:hover{
+    text-decoration: none;
+}
+a,.btn,.form-control{
+    border-radius: 0;
+}
+a,p{
+    letter-spacing: 1px;
+}
+p{
+    line-height: 28px;
+}
+figcaption{
+    background-color: #2e3740;
+}
+.text-uppercase,.page-header{
+    text-transform: uppercase;
+}
+.page-header{
+    margin: 70px 0 20px;
+}
+.margin-null,.header-social,.header-info,.footer-social,.newsletter h3{
+    margin: 0;
+}
+.pagination>li:last-child>a, .pagination>li:last-child>span,.pagination>li:first-child>a, .pagination>li:first-child>span{
+    border-radius: 0;
+}
+.margin-to-20{
+    margin-top: 20px;
+}
+.margin-to-30{
+    margin-top: 30px;
+}
+.margin-to-40{
+    margin-top: 40px;
+}
+.margin-bottom-20{
+    margin-bottom: 20px;
+}
+.margin-right-10{
+    margin-right: 10px;
+}
+.padding-null{
+    padding: 0;
+}
+.padding-gap-1,.parallax,.footer{
+    padding-top: 70px;
+}
+.padding-gap-2,.main-slider{
+    padding-bottom:70px;
+}
+.padding-gap-3{
+    padding-top:50px;
+}
+.padding-gap-4{
+    padding-bottom: 50px;
+}
+.padding-top-10 {
+    padding-top: 10px;
+}
+.padding-bottom-10,.footer-top{
+    padding-bottom: 10px;
+}
+.display-inline-b,.header-top .header-social a,.footer-social a,.footer-middle li a{
+    display: inline-block;
+}
+.overflow{
+    overflow: hidden;
+}
+.full-width,.footer-middle li a,.product-wrap .product-hover,.product-wrap .product-overlay{
+    width: 100%;
+}
+.position-r,.product-wrap,.product-image{
+    position: relative;
+}
+.position-a,.product-wrap .product-hover,.product-new,.product-sold{
+    position: absolute;
+}
+/********************************************************
+    ## Header
+********************************************************/
+.header-top {
+    background: #f8f8f8;
+}
+.header-top .header-social a{
+    padding: 0 7px 0 0;
+}
+.header-middle .mini-cart{
+    margin-top: 25px;
+}
+.header-bottom{
+    background: #f8f8f8;
+}
+.header-bottom .navbar-default{
+    margin-bottom: 0;
+    height: inherit;
+    background: transparent;
+    border: 0;
+}
+.main-menu li.dropdown:hover  .dropdown-menu{
+    display: block;
+    padding: 0;
+}
+.dropdown-menu>li>a {
+    padding: 10px 20px;
+}
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover{
+    background-color: #f5f5f5;
+}
+/********************************************************
+    ## Home
+********************************************************/
+.owl-nav{
+    text-align: center;
+}
+.owl-prev,.owl-next{
+    display: inline-block;
+}
+/********************************************************
+    ## Contact Us
+********************************************************/
+.form-control{
+    height: inherit;
+}
+/********************************************************
+    ## Article
+********************************************************/
+.article-comments .user-comments {
+    margin: 0 0 0 105px;
+}
+/********************************************************
+    ## Collections Page
+********************************************************/
+.widget ul li{
+    padding: 10px 15px;
+    border-bottom: #F9F7F7 1px solid;
+}
+.widget figure{
+    -webkit-box-shadow:0 1px 1px rgba(46, 55, 64, 0.52);
+    -moz-box-shadow:0 1px 1px rgba(46, 55, 64, 0.52);
+    -o-box-shadow: 0 1px 1px rgba(46, 55, 64, 0.52);
+    -ms-box-shadow:0 1px 1px rgba(46, 55, 64, 0.52);
+    box-shadow: 0 1px 1px rgba(46, 55, 64, 0.52);
+}
+/********************************************************
+    ## Product
+********************************************************/
+.product-wrap,.product-wrap .product-overlay {
+    overflow: hidden;
+}
+.product-wrap .product-overlay {
+    background: rgba(0, 0, 0, 0.35);
+    position: absolute;
+}
+.product-wrap .product-hover,.product-wrap .product-overlay{
+    height: 100%;
+    top: -100%;
+    -webkit-transition: all .6s ease-in-out;
+    -moz-transition: all .6s ease-in-out;
+    -o-transition: all .6s ease-in-out;
+    -ms-transition: all .6s ease-in-out;
+    transition: all .6s ease-in-out;
+}
+.product-wrap:hover .product-overlay{
+    top: 0;
+}
+.product-wrap:hover .product-hover {
+    top: 10%;
+    height: 46%;
+}
+.product-new,.product-sold{
+    top: 0;
+}
+.product-new{
+    left: 0;
+    padding: 5px;
+}
+.product-sold{
+    right: 0;
+}
+.product-thumb li {
+    width: 33.333333%;
+    float: left;
+}
+/********************************************************
+    ## Blog
+********************************************************/
+.blog-date-time {
+    font-size: 11px;
+}
+/********************************************************
+    ## Search
+********************************************************/
+.search-page .navbar-form .form-control {
+    padding: 12px 16px;
+}
+/********************************************************
+    ## Footer
+********************************************************/
+.footer-top{
+    background: #ddd;
+}
+.footer-social a{
+    margin-top: 10px;
+    border: 1px solid;
+    padding: 5px 9px;
+}
+.newsletter{
+    margin-top: 10px;
+}
+.newsletter h3{
+    margin-right: 10px;
+    margin-top: 3px;
+}
+.footer-middle{
+    padding-bottom: 40px;
+}
+.footer-middle h4{
+    margin-top: 40px;
+}
+.footer-middle li a{
+    padding: 5px 0;
+}
+.footer-bottom{
+    padding-top: 20px;
+}
+.footer-img img{
+    max-height: 140px;
+}
