@@ -80,7 +80,7 @@ figcaption{
 .padding-bottom-10,.footer-top{
     padding-bottom: 10px;
 }
-.display-inline-b,.header-top .header-social a,.footer-social a,.footer-middle li a{
+.display-inline-b,.header-1 .header-social a,.footer-social a,.footer-middle li a{
     display: inline-block;
 }
 .overflow{
@@ -98,10 +98,10 @@ figcaption{
 /********************************************************
     ## Header
 ********************************************************/
-.header-top {
+.header-1 {
     background: #f8f8f8;
 }
-.header-top .header-social a{
+.header-1 .header-social a{
     padding: 0 7px 0 0;
 }
 .header-middle .mini-cart{
