@@ -6,7 +6,7 @@
                 <h1 class="page-header margin-bottom-10 text-center">{{settings.blog_heading}}</h1>
             </div>
             <div class="full-width">
-                {% for article in blogs['news'].articles limit: settings.home_blog_limit %}
+                {% for article in blogs[settings.select_blog].articles limit: settings.home_blog_limit %}
                 <div class="col-md-4 col-sm-4 col-xs-12 margin-to-30">
                     <h2 class="margin-bottom-20"><a href="{{article.url}}">{{article.title}}</a></h2>
                     {% if article.image %}

@@ -10,10 +10,9 @@
         <div class="col-md-4 col-sm-4 col-xs-12 margin-to-30">
           {% if collection.image %}
           <div class="collection-feature-img">
-            <a href="{{collection.url}}"><img src="{{ collection.image | img_url: 'grande' }}" class="img-responsive center-block" alt="" /></a>
+            <a href="{{collection.url}}"><img src="{{ collection.image | img_url: 'large' }}" class="img-responsive center-block" alt="" /></a>
           </div>
           {% endif %}
-          {{ collection.all_products_count }}
           <h3><a href="{{ collection.url }}">{{ collection.title }}</a></h3>
           <div class="collection-description margin-bottom-20">
             <p>{{collection.description | truncate: 130}}</p>

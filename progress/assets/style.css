@@ -77,16 +77,16 @@ figcaption{
 .padding-top-10 {
     padding-top: 10px;
 }
-.padding-bottom-10,.footer-top{
+.padding-bottom-10,.footer-1{
     padding-bottom: 10px;
 }
-.display-inline-b,.header-1 .header-social a,.footer-social a,.footer-middle li a{
+.display-inline-b,.header-1 .header-social a,.footer-social a,.footer-2 li a{
     display: inline-block;
 }
 .overflow{
     overflow: hidden;
 }
-.full-width,.footer-middle li a,.product-wrap .product-hover,.product-wrap .product-overlay{
+.full-width,.footer-2 li a,.product-wrap .product-hover,.product-wrap .product-overlay{
     width: 100%;
 }
 .position-r,.product-wrap,.product-image{
@@ -104,13 +104,13 @@ figcaption{
 .header-1 .header-social a{
     padding: 0 7px 0 0;
 }
-.header-middle .mini-cart{
+.header-2 .mini-cart{
     margin-top: 25px;
 }
-.header-bottom{
+.header-3{
     background: #f8f8f8;
 }
-.header-bottom .navbar-default{
+.header-3 .navbar-default{
     margin-bottom: 0;
     height: inherit;
     background: transparent;
@@ -216,7 +216,7 @@ figcaption{
 /********************************************************
     ## Footer
 ********************************************************/
-.footer-top{
+.footer-1{
     background: #ddd;
 }
 .footer-social a{
@@ -231,16 +231,16 @@ figcaption{
     margin-right: 10px;
     margin-top: 3px;
 }
-.footer-middle{
+.footer-2{
     padding-bottom: 40px;
 }
-.footer-middle h4{
+.footer-2 h4{
     margin-top: 40px;
 }
-.footer-middle li a{
+.footer-2 li a{
     padding: 5px 0;
 }
-.footer-bottom{
+.footer-3{
     padding-top: 20px;
 }
 .footer-img img{
