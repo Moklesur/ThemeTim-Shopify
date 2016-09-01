@@ -9,6 +9,10 @@
     {% if product.compare_at_price_max > product.price %}
     <div class="new">New</div>
     {% endif %}
+
+    {% unless product.available %}
+    <div class="sold-out">Sold Out</div>
+    {% endunless %}
     <!--<div class="sold">Sold</div>-->
     <div class="product-hover">
             <span class="product-rating">
@@ -30,8 +34,13 @@
             {% endif %}
         </p>
     </div>
+
     <div class="product-button">
+        {% unless product.available %}
+        <a href="{{ product.url }}" class="btn btn-default btn-block text-uppercase product-message disabled">Sold Out</a>
+        {% else %}
         <a href="{{ product.url }}" class="btn btn-default btn-block text-uppercase product-message">Buy Now</a>
+        {% endunless %}
     </div>
     <!-- Button trigger modal -->
 </div>

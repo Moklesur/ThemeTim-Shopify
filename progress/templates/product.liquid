@@ -7,16 +7,14 @@
                     <figure class="margin-to-30">
                         <figcaption><h4 class="panel-heading margin-null">Collections</h4></figcaption>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="collections-category">Cool Dresses</a></li>
-                            <li><a href="#" class="collections-category">Cool Dresses</a></li>
-                            <li><a href="#" class="collections-category">Cool Dresses</a></li>
-                            <li><a href="#" class="collections-category">Cool Dresses</a></li>
-                            <li><a href="#" class="collections-category">Cool Dresses</a></li>
+                            {% for collection in collections limit: 5 %}
+                            <li><a href="{{ collection.url }}" class="collections-category">{{ collection.title }}</a></li>
+                            {% endfor %}
                         </ul>
                     </figure>
                     <figure class="margin-to-30">
                         <figcaption><h4 class="panel-heading margin-null">HOT Dress</h4></figcaption>
-                        <img src="http://placehold.it/600x450" class="img-responsive center-block" />
+                        <img src="{{ 'collections-banner.png' | asset_url }}" class="img-responsive center-block" />
                     </figure>
                 </aside>
                 <!--------------- Product Content ---------------->
@@ -24,143 +22,103 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-xs-12 margin-to-30 text-center">
                             <div class="product-image">
-                                <img src="http://placehold.it/600x450" class="img-responsive center-block" align="" />
+                                {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+                                <img src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" class="img-responsive center-block" >
                             </div>
                             <div class="product-thumb">
+                                {% if product.images.size > 1 %}
                                 <ul class="list-inline">
-                                    <li><img src="http://placehold.it/200x200" class="img-responsive center-block margin-to-10" align="" /></li>
-                                    <li><img src="http://placehold.it/200x200" class="img-responsive center-block margin-to-10" align="" /></li>
-                                    <li><img src="http://placehold.it/200x200" class="img-responsive center-block margin-to-10" align="" /></li>
+                                    {% for image in product.images %}
+                                    <li>
+                                        <a href="#">
+                                            <img src="{{ image.src | img_url: 'grande' }}" alt="{{ image.alt | escape }}" class="img-responsive center-block margin-to-10">
+                                        </a>
+                                    </li>
+                                    {% endfor %}
                                 </ul>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12 margin-to-30">
-                            <h2 class="margin-null margin-bottom-20">Lorem Ipsum is simply dummy text</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                            <h3 class="margin-bottom-20">
-                                <span class="money">$350.00</span>
-                            </h3>
-                            <a href="#" class="btn btn-default btn-lg">Add To Cart</a>
-                            <div class="social-share">
-                                <h3>Social Share</h3>
-                                <ul class="list-inline">
-                                    <li class="margin-top-10">
-                                        <a href="" target="_blank"><i class="fa fa-linkedin"></i> Linkdin</a>
-                                    </li>
-                                    <li class="margin-top-10">
-                                        <a href="" target="_blank"><i class="fa fa-linkedin"></i> Linkdin</a>
-                                    </li>
-                                    <li class="margin-top-10">
-                                        <a href="" target="_blank"><i class="fa fa-linkedin"></i> Linkdin</a>
-                                    </li>
-                                    <li class="margin-top-10">
-                                        <a href="" target="_blank"><i class="fa fa-linkedin"></i> Linkdin</a>
-                                    </li>
-                                </ul>
+                            <h2 class="margin-null margin-bottom-20">{{ product.title }}</h2>
+                            <p>{{ product.description | truncatewords:35 }}</p>
+                            <div class="product-prices">
+                                {% if product.compare_at_price > product.price %}
+                                <h3>
+                                    <del><span class="money">{{ product.compare_at_price_max | money }}</span></del>
+                                    <span class="money">{{ product.price | money }}</span>
+                                </h3>
+                                {% else %}
+                                <h3 class="margin-bottom-20">
+                                    <span class="money">{{ product.price | money }}</span>
+                                </h3>
+                                {% endif %}
                             </div>
+
+                            <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+                                <select name="id" id="productSelect" class="product-variants">
+                                    {% for variant in product.variants %}
+                                    {% if variant.available %}
+                                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }}</option>
+                                    {% else %}
+                                    <option disabled="disabled">
+                                        {{ variant.title }}
+                                    </option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                                <div class="product-quantity{% unless settings.product_quantity_enable %} is-hidden{% endunless %}">
+                                    <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
+                                    <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+                                </div>
+                                <button type="submit" name="add" id="AddToCart" class="btn btn-default btn-lg">
+                                    <span id="AddToCartText">Add To Cart</span>
+                                </button>
+                            </form>
+                            {% if settings.social_sharing_products %}
+                            <div class="social-share">
+                                {% include 'social-sharing' %}
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
                 <!--------------- Related Product ---------------->
-                <div class="related-product text-center">
-                    <div class="col-md-12">
-                        <h2 class="page-header">Related Product</h2>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12 margin-to-30 text-center">
-                        <div class="product-wrap">
-                            <div class="product-image">
-                                <a href="#">
-                                    <div class="product-overlay"></div>
-                                    <img src="http://placehold.it/1024x600" class="img-responsive center-block" align="" />
-                                </a>
-                            </div>
-                            <div class="product-new">New</div>
-                            <div class="product-sold">Sold</div>
-                            <div class="product-hover">
-                                <span class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half"></i>
-                                </span>
-                            </div>
-                            <div class="product-title-price">
-                                <h4 class="margin-to-20"><a href="#">Demo Product</a></h4>
-                                <p class="overflow">
-                                    <del class="pull-left"><span class="money">$500.00</span></del>
-                                    <span class="money pull-right">$480.00</span>
-                                </p>
-                            </div>
-                            <div class="product-button">
-                                <a href="#" class="btn btn-default btn-block text-uppercase">Add to cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12 margin-to-30 text-center">
-                        <div class="product-wrap">
-                            <div class="product-image">
-                                <a href="#">
-                                    <div class="product-overlay"></div>
-                                    <img src="http://placehold.it/1024x600" class="img-responsive center-block" align="" />
-                                </a>
-                            </div>
-                            <div class="product-new">New</div>
-                            <div class="product-sold">Sold</div>
-                            <div class="product-hover">
-                                <span class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half"></i>
-                                </span>
-                            </div>
-                            <div class="product-title-price">
-                                <h4 class="margin-to-20"><a href="#">Demo Product</a></h4>
-                                <p class="overflow">
-                                    <del class="pull-left"><span class="money">$500.00</span></del>
-                                    <span class="money pull-right">$480.00</span>
-                                </p>
-                            </div>
-                            <div class="product-button">
-                                <a href="#" class="btn btn-default btn-block text-uppercase">Add to cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12 margin-to-30 text-center">
-                        <div class="product-wrap">
-                            <div class="product-image">
-                                <a href="#">
-                                    <div class="product-overlay"></div>
-                                    <img src="http://placehold.it/1024x600" class="img-responsive center-block" align="" />
-                                </a>
-                            </div>
-                            <div class="product-new">New</div>
-                            <div class="product-sold">Sold</div>
-                            <div class="product-hover">
-                                <span class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half"></i>
-                                </span>
-                            </div>
-                            <div class="product-title-price">
-                                <h4 class="margin-to-20"><a href="#">Demo Product</a></h4>
-                                <p class="overflow">
-                                    <del class="pull-left"><span class="money">$500.00</span></del>
-                                    <span class="money pull-right">$480.00</span>
-                                </p>
-                            </div>
-                            <div class="product-button">
-                                <a href="#" class="btn btn-default btn-block text-uppercase">Add to cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% include 'related-products' %}
             </div>
         </div>
     </section>
 </main>
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+<script>
+    var selectCallback = function(variant, selector) {
+        timber.productPage({
+            money_format: "{{ shop.money_format }}",
+            variant: variant,
+            selector: selector,
+            translations: {
+                add_to_cart : "{{ 'products.product.add_to_cart' | t }}",
+                sold_out : "{{ 'products.product.sold_out' | t }}",
+                unavailable : "{{ 'products.product.unavailable' | t }}"
+            }
+        });
+    };
+
+    jQuery(function($) {
+        new Shopify.OptionSelectors('productSelect', {
+            product: {{ product | json }},
+        onVariantSelected: selectCallback,
+                enableHistoryState: true
+    });
+
+        // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+        {% if product.options.size == 1 and product.options.first != 'Title' %}
+        $('.selector-wrapper:eq(0)').prepend('<label for="productSelect-option-0">{{ product.options.first | escape }}</label>');
+        {% endif %}
+
+        // Hide selectors if we only have 1 variant and its title contains 'Default'.
+        {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+        $('.selector-wrapper').hide();
+        {% endif %}
+    });
+</script>

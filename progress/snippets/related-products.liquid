@@ -1,0 +1,30 @@
+<div class="related-product text-center">
+    {% assign number_of_products = 4 %}
+    {% assign number_of_products_to_fetch = number_of_products | plus: 1 %}
+
+    {% if collection == null or collection.handle == 'frontpage' or collection.handle == 'all' %}
+    {% assign found_a_collection = false %}
+    {% for c in product.collections %}
+    {% if found_a_collection == false and c.handle != 'frontpage' and c.handle != 'all' and c.all_products_count > 1 %}
+    {% assign found_a_collection = true %}
+    {% assign collection = c %}
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    {% if collection and collection.products_count > 1 %}
+    <div class="col-md-12">
+        <h2 class="page-header">Related Product</h2>
+    </div>
+    <div class="full-width">
+        {% for product in collection.products limit: 3 %}
+        {% if product.handle == current_product.handle %}
+        {% else %}
+        <div class="col-md-4 col-sm-4 col-xs-12 margin-to-30 text-center">
+            {% include 'product' %}
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>

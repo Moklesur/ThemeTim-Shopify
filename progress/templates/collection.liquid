@@ -16,14 +16,14 @@
                     <figure class="margin-to-30">
                         <figcaption><h4 class="panel-heading margin-null">Collections</h4></figcaption>
                         <ul class="list-unstyled">
-                            {% for collection in collections %}
+                            {% for collection in collections limit: 5 %}
                             <li><a href="{{ collection.url }}" class="collections-category">{{ collection.title }}</a></li>
                             {% endfor %}
                         </ul>
                     </figure>
                     <figure class="margin-to-30">
                         <figcaption><h4 class="panel-heading margin-null">HOT Dress</h4></figcaption>
-                        <img src="http://placehold.it/600x450" class="img-responsive center-block" />
+                        <img src="{{ 'collections-banner.png' | asset_url }}" class="img-responsive center-block" />
                     </figure>
                 </aside> 
                 {% endif %}
