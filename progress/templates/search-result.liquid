@@ -1,112 +1,60 @@
-<main class="search-page">
-    <!--------------- Search ---------------->
-    <section class="search-content">
-        <!--------------- Search Result ---------------->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2 class="page-header">Search</h2>
-                </div>
-                <div class="full-width display-inline-b">
-                    <div class="col-md-3 col-sm-3 col-xs-12 margin-to-30 text-center">
-                        <div class="product-wrap">
-                            <div class="product-image">
-                                <a href="#">
-                                    <div class="product-overlay"></div>
-                                    <img src="http://placehold.it/1024x600" class="img-responsive center-block" align="" />
-                                </a>
-                            </div>
-                            <div class="product-new">New</div>
-                            <div class="product-sold">Sold</div>
-                        </div>
-                    </div>
-                    <div class="col-md-9 col-sm-9 col-xs-12 margin-to-30">
-                        <div class="product-title-price">
-                            <h2 class="margin-null margin-bottom-20"><a href="#">Demo Product</a></h2>
-                        </div>
-                        <h3 class="overflow margin-bottom-20">
-                            <del class="margin-right-10"><span class="money">$500.00</span></del>
-                            <span class="money">$480.00</span>
-                        </h3>
-                        <p class="margin-bottom-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                        <div class="product-button">
-                            <a href="#" class="btn btn-default text-uppercase">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="full-width display-inline-b">
-                    <div class="col-md-12 col-sm-12 col-xs-12 margin-to-30">
-                        <div class="product-title-price">
-                            <h2 class="margin-null margin-bottom-20"><a href="#">Demo Product</a></h2>
-                        </div>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    </div>
-                </div>
-                <div class="full-width display-inline-b">
-                    <div class="col-md-3 col-sm-3 col-xs-12 margin-to-30 text-center">
-                        <div class="product-wrap">
-                            <div class="product-image">
-                                <a href="#">
-                                    <div class="product-overlay"></div>
-                                    <img src="http://placehold.it/1024x600" class="img-responsive center-block" align="" />
-                                </a>
-                            </div>
-                            <div class="product-new">New</div>
-                            <div class="product-sold">Sold</div>
-                        </div>
-                    </div>
-                    <div class="col-md-9 col-sm-9 col-xs-12 margin-to-30">
-                        <div class="product-title-price">
-                            <h2 class="margin-null margin-bottom-20"><a href="#">Demo Product</a></h2>
-                        </div>
-                        <h3 class="overflow margin-bottom-20">
-                            <del class="margin-right-10"><span class="money">$500.00</span></del>
-                            <span class="money">$480.00</span>
-                        </h3>
-                        <p class="margin-bottom-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                        <div class="product-button">
-                            <a href="#" class="btn btn-default text-uppercase">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="full-width display-inline-b">
-                    <div class="col-md-3 col-sm-3 col-xs-12 margin-to-30 text-center">
-                        <div class="product-wrap">
-                            <div class="product-image">
-                                <a href="#">
-                                    <div class="product-overlay"></div>
-                                    <img src="http://placehold.it/1024x600" class="img-responsive center-block" align="" />
-                                </a>
-                            </div>
-                            <div class="product-new">New</div>
-                            <div class="product-sold">Sold</div>
-                        </div>
-                    </div>
-                    <div class="col-md-9 col-sm-9 col-xs-12 margin-to-30">
-                        <div class="product-title-price">
-                            <h2 class="margin-null margin-bottom-20"><a href="#">Demo Product</a></h2>
-                        </div>
-                        <h3 class="overflow margin-bottom-20">
-                            <del class="margin-right-10"><span class="money">$500.00</span></del>
-                            <span class="money">$480.00</span>
-                        </h3>
-                        <p class="margin-bottom-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                        <div class="product-button">
-                            <a href="#" class="btn btn-default text-uppercase">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-12 col-sm-12 col-xs-12 pagination-wrap margin-to-30 text-center">
-                    <!--------------- pagination ---------------->
-                    <ul class="list-inline pagination">
-                        <li class="disabled display-inline-b"><a><i class="fa fa-angle-left"></i></a></li>
-                        <li class="active display-inline-b"><span>1</span></li>
-                        <li class="display-inline-b"><a href="#"><span>2</span></a></li>
-                        <li class="display-inline-b"><a href="#" class="prev-page"><i class=" fa fa-angle-right"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
+
+
+
+{% if search.performed %}
+{% paginate search.results by 10 %}
+{% if search.results_count == 0 %}
+
+<div class="section-header section-header--large">
+    <h1 class="section-header__title h2">{{ 'general.search.no_results_html' | t: terms: search.terms }}</h1>
+</div>
+{% include 'search-bar' %}
+
+{% else %}
+
+<div class="section-header section-header--large">
+    <h1 class="section-header__title h2">{{ 'general.search.results_for_html' | t: terms: search.terms }}</h1>
+</div>
+{% include 'search-bar' %}
+
+
+{% if grid_results == false %}
+
+<hr>
+{% for item in search.results %}
+{% include 'search-result' %}
+<hr>
+{% endfor %}
+
+{% else %}
+
+<div class="grid-uniform">
+    {% for item in search.results %}
+    {% assign grid_item_width = 'large--one-quarter medium--one-third small--one-half' %}
+    {% include 'search-result-grid' %}
+    {% endfor %}
+</div>
+
+{% endif %}
+
+{% endif %}
+
+{% if paginate.pages > 1 %}
+<div class="text-center">
+    {% include 'pagination-custom' %}
+</div>
+{% endif %}
+
+{% endpaginate %}
+
+{% else %}
+
+
+<div class="section-header section-header--large">
+    <h1 class="section-header__title h2">{{ 'general.search.title' | t }}</h1>
+</div>
+{% include 'search-bar' %}
+
+{% endif %}
+

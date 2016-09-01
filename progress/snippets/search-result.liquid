@@ -1,0 +1,36 @@
+<div class="col-md-3 col-sm-3 col-xs-12 margin-to-30 text-center">
+    <div class="product-wrap">
+        <div class="product-image">
+            {% assign has_image = false %}
+            {% if item.featured_image or item.image %}
+            {% assign has_image = true %}
+            {% assign image_alt = item.title | escape %}
+            <a  href="{{ item.url }}" title="{{ image_alt  }}">
+                <div class="product-overlay"></div>
+                <img src="{{ item | img_url: 'medium' }}" class="img-responsive center-block" alt="{{image_alt}}" />
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="col-md-9 col-sm-9 col-xs-12 margin-to-30">
+    <div class="product-title-price">
+        <h2 class="margin-null margin-bottom-20">
+            <a href="{{ item.url }}">{{ item.title }}</a>
+        </h2>
+    </div>
+    {% if item.object_type == 'product' %}
+    <h3 class="overflow margin-bottom-20">
+    {% if item.compare_at_price > item.price %}
+        <del class="margin-right-10"><span class="money">{{ item.compare_at_price_max | money }}</span></del>
+        <span class="money">{{ item.price | money }}</span>
+    {% else %}
+        <span class="money">{{ item.price | money }}</span>
+    {% endif %}
+    </h3>
+    {% endif %}
+    <p class="margin-bottom-20">{{ item.content | strip_html | truncatewords: 20 }}</p>
+    <div class="product-button">
+        <a href="{{ item.url }}" class="btn btn-default text-uppercase">Add to cart</a>
+    </div>
+</div>

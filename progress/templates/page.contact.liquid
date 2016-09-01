@@ -1,39 +1,60 @@
-<div class="section-header">
-  <h1 class="section-header--title">{{ page.title }}</h1>
-</div>
+<main class="contact-page">
+  <section>
+    <div class="container">
+      <div class="row">
+        <!--------------- Aside ---------------->
+        <aside class="widgets col-md-3 col-sm-3 col-xs-12 product-widget widget">
+          <figure class="margin-to-30">
+            <figcaption><h4 class="panel-heading margin-null">Collections</h4></figcaption>
+            <ul class="list-unstyled">
+              {% for collection in collections limit: 5 %}
+              <li><a href="{{ collection.url }}" class="collections-category">{{ collection.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </figure>
+          <figure class="margin-to-30">
+            <figcaption><h4 class="panel-heading margin-null">HOT Dress</h4></figcaption>
+            <img src="{{ 'collections-banner.png' | asset_url }}" class="img-responsive center-block" />
+          </figure>
+        </aside>
+        <!--------------- Content Content ---------------->
+        <div class="col-md-9 col-sm-9 col-xs-12 content-content">
+          <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-12 margin-to-30">
+              <h1 class="page-header margin-null margin-bottom-20">{{ page.title }}</h1>
+              {% if page.content != blank %}
+              <div class="margin-bottom-20">
+                {{ page.content }}
+              </div>
+              {% endif %}
+              <!--------------- Contact Us Form ---------------->
+              {% form 'contact', class:'contact-form' %}
 
-<div class="rte">
-  {{ page.content }}
-</div>
+              {% if form.posted_successfully? %}
+              <p class="note form-success">
+                {{ 'contact.form.post_success' | t }}
+              </p>
+              {% endif %}
 
-<div>
-
-  {% form 'contact' %}
-
-    {% if form.posted_successfully? %}
-      <p class="note form-success">
-        {{ 'contact.form.post_success' | t }}
-      </p>
-    {% endif %}
-
-    {{ form.errors | default_errors }}
-
-    {% assign name_attr = 'contact.form.name' | t | handle %}
-    <label for="ContactFormName" class="label--hidden">{{ 'contact.form.name' | t }}</label>
-    <input type="text" id="ContactFormName" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
-
-    <label for="ContactFormEmail" class="label--hidden">{{ 'contact.form.email' | t }}</label>
-    <input type="email" id="ContactFormEmail" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
-
-    {% assign name_attr = 'contact.form.phone' | t | handle %}
-    <label for="ContactFormPhone" class="label--hidden">{{ 'contact.form.phone' | t }}</label>
-    <input type="tel" id="ContactFormPhone" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
-
-    <label for="ContactFormMessage" class="label--hidden">{{ 'contact.form.message' | t }}</label>
-    <textarea rows="10" id="ContactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
-
-    <input type="submit" class="btn right" value="{{ 'contact.form.send' | t }}">
-
-  {% endform %}
-
-</div>
+              {{ form.errors | default_errors }}
+              <label>Your Name</label>
+              <input type="text" class="form-control margin-bottom-20" name="contact[name]" placeholder="Your Name" value="{{ form.name }}">
+              <label>Email</label>
+              <input type="email" class="form-control margin-bottom-20" name="contact[email]" placeholder="your@email.com" value="{{ form.email }}">
+              <label>Phone Number</label>
+              <input type="tel" class="form-control margin-bottom-20" name="contact[phone]" placeholder="000-000-0000" value="{{ form.phone }}">
+              <label>Message</label>
+              <textarea rows="10" name="contact[body]" class="form-control margin-bottom-20" placeholder="Your message">{{ form.body }}</textarea>
+              <button type="submit" class="btn btn-default btn-lg" value="Send">Submit Message</button>
+              {% endform %}
+            </div>
+            <!--------------- Google MAP ---------------->
+            <div class="col-md-9 col-sm-9 col-xs-12 padding-gap-1">
+              <div id="googleMap" style="height: 450px; width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

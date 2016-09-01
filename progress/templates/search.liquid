@@ -4,8 +4,11 @@
         <!--------------- Search Form ---------------->
         <div class="container">
             <div class="row">
+                {% if search.performed %}
+                {% paginate search.results by 10 %}
+                {% if search.results_count == 0 %}
                 <div class="col-md-12 text-center">
-                    <h2 class="page-header">Search</h2>
+                    <h2 class="page-header">{{ 'general.search.no_results_html' | t: terms: search.terms }}</h2>
                     <form class="navbar-form search-form margin-to-30" action="/search">
                         <div class="form-group">
                             <input type="text" name="q" class="form-control" placeholder="Search... " value="">
@@ -13,6 +16,18 @@
                         <button type="submit" class="btn btn-default btn-lg"><i class="fa fa-search"></i> Search</button>
                     </form>
                 </div>
+                {% else %}
+                <div class="col-md-12 text-center">
+                    <h2 class="page-header">{{ 'general.search.results_for_html' | t: terms: search.terms }}</h2>
+                </div>
+                {% for item in search.results %}
+                <div class="full-width display-inline-b">
+                    {% include 'search-result' %}
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endpaginate %}
+                {% endif %}
             </div>
         </div>
     </section>
