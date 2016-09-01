@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="967175a7-f589-4954-abb9-29eabb7dcc9a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/progress/templates/contact-us.liquid" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/progress/templates/page.no-heading.liquid" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/progress/templates/blog.liquid" afterPath="$PROJECT_DIR$/progress/templates/blog.liquid" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/progress/templates/page.contact.liquid" afterPath="$PROJECT_DIR$/progress/templates/page.contact.liquid" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/progress/templates/search-result.liquid" afterPath="$PROJECT_DIR$/progress/templates/search-result.liquid" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/progress.zip" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/progress/snippets/search-result.liquid" afterPath="$PROJECT_DIR$/progress/snippets/search-result.liquid" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/progress/templates/search.liquid" afterPath="$PROJECT_DIR$/progress/templates/search.liquid" />
     </list>
     <ignored path="ThemeTim-shopify.iws" />
@@ -30,24 +26,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="search.liquid" pinned="false" current-in-tab="false">
+      <file leaf-file-name="search.liquid" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/progress/templates/search.liquid">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.806452">
-              <caret line="20" column="86" selection-start-line="20" selection-start-column="86" selection-end-line="20" selection-end-column="106" />
-              <folding />
+            <state vertical-scroll-proportion="0.34729493">
+              <caret line="55" column="76" selection-start-line="55" selection-start-column="76" selection-end-line="55" selection-end-column="76" />
+              <folding>
+                <element signature="n#div#3;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search-result.liquid" pinned="false" current-in-tab="true">
+      <file leaf-file-name="search-result.liquid" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/progress/snippets/search-result.liquid">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6527051">
-              <caret line="31" column="80" selection-start-line="31" selection-start-column="80" selection-end-line="31" selection-end-column="80" />
-              <folding>
-                <element signature="n#div#0;n#!!top" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="4.935484">
+              <caret line="9" column="52" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,9 +74,22 @@
       <file leaf-file-name="search-result.liquid" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/progress/templates/search-result.liquid">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.451612">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="4" />
+            <state vertical-scroll-proportion="-9.967742">
+              <caret line="54" column="73" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="73" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="collection.liquid" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/progress/templates/collection.liquid">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.548388">
+              <caret line="61" column="35" selection-start-line="38" selection-start-column="24" selection-end-line="61" selection-end-column="35" />
+              <folding>
+                <element signature="n#aside#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#0;n#div#2;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,8 +121,8 @@
         <option value="$PROJECT_DIR$/progress/templates/contact-us.liquid" />
         <option value="$PROJECT_DIR$/progress/templates/page.contact.liquid" />
         <option value="$PROJECT_DIR$/progress/templates/search-result.liquid" />
-        <option value="$PROJECT_DIR$/progress/templates/search.liquid" />
         <option value="$PROJECT_DIR$/progress/snippets/search-result.liquid" />
+        <option value="$PROJECT_DIR$/progress/templates/search.liquid" />
       </list>
     </option>
   </component>
@@ -576,16 +585,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/progress/templates/collection.liquid">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26876092">
-          <caret line="7" column="56" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="56" />
-          <folding>
-            <element signature="n#aside#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/progress/snippets/related-products.liquid">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.290323">
@@ -620,14 +619,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/progress/templates/search-result.liquid">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.451612">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../ThemeTim-HTML/HTML/search-result.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.83871">
@@ -635,6 +626,17 @@
           <folding>
             <element signature="n#header#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/progress/templates/collection.liquid">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.548388">
+          <caret line="61" column="35" selection-start-line="38" selection-start-column="24" selection-end-line="61" selection-end-column="35" />
+          <folding>
+            <element signature="n#aside#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#2;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -647,20 +649,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/progress/templates/search.liquid">
+    <entry file="file://$PROJECT_DIR$/progress/templates/search-result.liquid">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.806452">
-          <caret line="20" column="86" selection-start-line="20" selection-start-column="86" selection-end-line="20" selection-end-column="106" />
+        <state vertical-scroll-proportion="-9.967742">
+          <caret line="54" column="73" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="73" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/progress/snippets/search-result.liquid">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6527051">
-          <caret line="31" column="80" selection-start-line="31" selection-start-column="80" selection-end-line="31" selection-end-column="80" />
+        <state vertical-scroll-proportion="4.935484">
+          <caret line="9" column="52" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/progress/templates/search.liquid">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34729493">
+          <caret line="55" column="76" selection-start-line="55" selection-start-column="76" selection-end-line="55" selection-end-column="76" />
           <folding>
-            <element signature="n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
